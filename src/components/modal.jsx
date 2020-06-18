@@ -1,11 +1,19 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {closeModal} from '../actions/modal_action';
 
 
-
-function Modal(){
+function Modal(modal, component){
 	
+	let component;
 
+
+	return(
+		<div onClick={closeModal}>
+		{component}
+		</div>
+
+		)
 
 };
 
@@ -15,7 +23,7 @@ const mapStateToProps = state =>({
 });
 
 const mapDispatchToProps = dispatch =>({
-	closeModal: ()=> dispatch(closeModal)
+	closeModal: ()=> dispatch(closeModal())
 });
 
 
