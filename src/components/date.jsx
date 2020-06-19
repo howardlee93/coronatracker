@@ -11,23 +11,23 @@ const DateLookup = () => {
 
 	//function to clean up date
 
-	function dateFormater(input){
-
-		let dateObject = new Date(date);
-
-	}
 
 	function handleDateSubmit(e){
 		e.preventDefault();
 
+		console.log(date.replace(/-/g,""));
+
+		//props.updateDate(date.replace(/-/g,"")));
+		
 	}
 
 
 	return(
 		<form onSubmit={handleDateSubmit}>
 
-			<label> Look up the date </label>
 			<input type='date' value={date} onChange={e=>setDate(e.target.value)}/>
+			<br/>
+			<button type="submit"> Look up the date </button>
 
 		</form>
 		)
@@ -45,7 +45,7 @@ export default DateLookup;
 
 // const mapDispatchToProps = dispatch => ({
 
-// 	fetchDateData: date => dispatch(fetchDateData(date))
+// 	updateDate: date => dispatch(updateDate(date))
 // })
 
 // export default connect(mapStateToProps, mapDispatchToProps)(dateLookup);

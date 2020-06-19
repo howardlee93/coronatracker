@@ -21,9 +21,8 @@ class Map extends React.Component{
 				console.log(this.state.selected)
 			}
 		);
-		// console.log(this.state.selected);
 
-		//this.props.fetchAreaData(this.state.selected);
+		//this.props.fetchsStateaData(this.state.selected);
 
 	};
 
