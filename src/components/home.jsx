@@ -2,6 +2,9 @@ import React from 'react';
 import MapContainer from './map/map' //map/map_container';
 
 import Map from './map/map';
+import DateLookupContainer from './date';
+
+
 
 
 const Home = () => (
@@ -10,7 +13,7 @@ const Home = () => (
 		  <h1> Interactive Coronavirus Tracker</h1>
 	   </header>
 
-		
+		<DateLookupContainer/>
 		<Map/>
 
 	 <footer>

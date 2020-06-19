@@ -24,7 +24,7 @@ class Chart extends React.Component{
 	render(){
 		return(
             <div>
-                <h3> Delegate count</h3>
+                <h3> information</h3>
 			     <div ref="chart"/>
             </div>
 			)

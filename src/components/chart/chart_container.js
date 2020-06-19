@@ -9,7 +9,7 @@ import Chart from './chart';
 
 
 const mapStateToProps = state => ({
-	candidate: state.candidate
+	data: state.data
 });
 
 

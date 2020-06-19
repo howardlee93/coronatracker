@@ -1,7 +1,6 @@
 import React from 'react';
 
 
-
 class Map extends React.Component{
 
 	constructor(props){
@@ -13,11 +12,6 @@ class Map extends React.Component{
 			hover: false
 		}
 	};
-
-
-	componentDidMount(){
-
-	}
 
 	onMapClick(area){
 		this.setState({
@@ -54,6 +48,9 @@ class Map extends React.Component{
 	render(){
 		
 		return(
+
+
+
 
 			<svg xmlns="http://www.w3.org/2000/svg" width="959" height="593"  style={{fill:'#D3D3D3'}}>
 			<title>Blank US states map</title>

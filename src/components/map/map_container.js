@@ -1,7 +1,7 @@
 // mapContainer.js
 
 import {connect} from 'react-redux';
-import {fetchAreaData} from '../../actions/data_actions'
+import {fetchStateData} from '../../actions/data_actions'
 
 import Map from './map';
 
