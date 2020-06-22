@@ -15,6 +15,9 @@ const Home = () => (
 	   </header>
     <Chart/>
 
+    <DateLookupContainer/>
+    <Map/>
+
 	 <footer>
        <p>Hi! This web tool was built with React/ Redux and uses Google Sheets.</p>
 
@@ -34,7 +37,3 @@ const Home = () => (
 export default Home;
 
 
-
-
-    // <DateLookupContainer/>
-    // <Map/>
