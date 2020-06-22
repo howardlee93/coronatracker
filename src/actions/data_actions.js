@@ -18,3 +18,7 @@ const receiveState = area => ({
 	type: RECEIVE_AREA,
 	area
 })
+
+const fetchCoronaData = async (area, date)=>{
+	await APIUtil.fetchAreaData(area);
+}

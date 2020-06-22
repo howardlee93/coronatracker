@@ -3,6 +3,7 @@ import MapContainer from './map/map' //map/map_container';
 
 import Map from './map/map';
 import DateLookupContainer from './date';
+import Chart from './chart/chart';
 
 
 
@@ -12,9 +13,7 @@ const Home = () => (
 		<header>
 		  <h1> Interactive Coronavirus Tracker</h1>
 	   </header>
-
-		<DateLookupContainer/>
-		<Map/>
+    <Chart/>
 
 	 <footer>
        <p>Hi! This web tool was built with React/ Redux and uses Google Sheets.</p>
@@ -34,3 +33,8 @@ const Home = () => (
 
 export default Home;
 
+
+
+
+    // <DateLookupContainer/>
+    // <Map/>
