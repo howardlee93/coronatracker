@@ -2,34 +2,37 @@
 import axios from 'axios';
 
 
-const baseURL = 'https://covidtracking.com/api/v1/states';
+const baseURL = 'https://covidtracking.com/api/v1/states/';
 
-const fetchHistoricAreaData = (area, date) => {
-	return axios.get(baseURL, `${area}/${date}.json`)
-	.then(response => console.log(responses))
+
+// https://covidtracking.com/api/v1/states/
+
+export const fetchHistoricAreaData = (area, date) => {
+	return axios.get(baseURL + `${area}/${date}.json`)
+	.then(response => console.log(response))
 	.catch(err => console.log(err));
 
 };
 
 
 
-const fetchDateData = date => {
-	return axios.get(baseURL,`us/${date}.json`)
+export const fetchDateData = date => {
+	return axios.get(baseURL+`us/${date}.json`)
 	.then(res => console.log(res))
 	.catch(err => console.log(err));
 	
 }
 
 
-const fetchGeneralData = () => {
-	return axios.get(baseURL,'us/current.json')
-	.then(response => console.log(responses))
+export const fetchGeneralData = () => { // not sure if this is needed
+	return axios.get(baseURL, +'us/current.json')
+	.then(response => console.log(response))
 	.catch(err => console.log(err));
 
 };
 
-const fetchAreaData = area => {
-	return axios.get(baseURL,`${area}/current.json`)
+export const fetchAreaData = area => {
+	return axios.get(baseURL +`${area}/current.json`)
 	.then(res => console.log(res))
 	.catch(err => console.log(err));
 	
