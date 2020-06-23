@@ -1,11 +1,24 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_action';
+import ChartContainer from './chart/chart';
+
 
 
 function Modal(modal, component){
 	
 	let component;
+
+	if (!modal){
+		return null;
+	}
+
+	if(modal == "chart"){
+		component = <ChartContainer/>
+	}else{
+		return null;
+	}
+
 
 
 	return(
