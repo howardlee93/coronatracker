@@ -14,7 +14,8 @@ const mapStateToProps = state => ({
 
 
 const mapDispatchToProps = dispatch => ({
-	fetchCandidateData: (name) => dispatch(fetchCandidateData(name)),
+	fetchGeneralData: () => dispatch(fetchGeneralData()),
+	
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chart);

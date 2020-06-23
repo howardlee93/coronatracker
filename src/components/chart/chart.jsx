@@ -2,13 +2,10 @@ import React, {useState, useRef, useEffect} from 'react';
 
 import *  as d3 from 'd3';
 
-// width={200}
-//           height={200}
-//           innerRadius={60}
-//           outerRadius={100}
 
-const fakeData = [ 1,2,32, 44,5];
+// const dummyData = [{cat: "total", value: 12}, {cat: "dead", value:3}, {cat: "alive", value: 3}];
 
+const dummyData= {"positive":178054,"pending":null, "negative":3233632,"hospitalizedCurrently":4804,"inIcuCurrently":1412};
 
 
 const Pie = ({ data, index, createArc, colors, format }) => (
@@ -27,28 +24,34 @@ const Pie = ({ data, index, createArc, colors, format }) => (
 );
 
 
-
 const Chart = (props)=> {
 
 	const [hov, setHov] = useState(false);
 
 
-	useEffect()
+  // const [data, setData] = useState(0);
+
+	// useEffect( ()=>{
+//  load data from state 
+  // } ,[props])
 
 	const makePie = d3
 		.pie()
-		.value(d=> d.value)
-		.sort(null)
+    .sort(null)
+
+		.value( (d)=>  + d.value)
+
+  //   .text()
 
 
 	const createArc = d3
 		.arc()
 		.innerRadius(60)
-    	.outerRadius(100);
+    .outerRadius(100);
 
  	const colors = d3.scaleOrdinal(d3.schemeCategory10);
-  	const format = d3.format(".2f");
-  	const data = makePie(fakeData);//props.data
+  const format = d3.format(".2f");
+  const data = makePie(dummyData);//props.data
 
   	return(
   		<svg width={200} height={200}>
