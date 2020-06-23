@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const baseURL = 'https://covidtracking.com/api/v1/states';
 
-const fetchAreaData = (area, date) => {
+const fetchHistoricAreaData = (area, date) => {
 	return axios.get(baseURL, `${area}/${date}.json`)
 	.then(response => console.log(responses))
 	.catch(err => console.log(err));
@@ -21,3 +21,16 @@ const fetchDateData = date => {
 }
 
 
+const fetchGeneralData = () => {
+	return axios.get('https://covidtracking.com/api/states')
+	.then(response => console.log(responses))
+	.catch(err => console.log(err));
+
+};
+
+const fetchAreaData = area =>  {
+	return axios.get(baseURL,`${area}/.info`)
+	.then(res => console.log(res))
+	.catch(err => console.log(err));
+	
+}
