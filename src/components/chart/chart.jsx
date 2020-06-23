@@ -2,7 +2,7 @@ import React, {useState, useRef, useEffect} from 'react';
 
 import *  as d3 from 'd3';
 
-
+import {fetchAreaData} from '../../util/api_util'
 // const dummyData = [{cat: "total", value: 12}, {cat: "dead", value:3}, {cat: "alive", value: 3}];
 
 const dummyData= {"positive":178054,  "pending":null,  "negative":3233632,"hospitalizedCurrently":4804,"inIcuCurrently":1412};
@@ -29,11 +29,13 @@ const Chart = (props)=> {
 	const [hov, setHov] = useState(false);
 
 
-  // const [data, setData] = useState([]);
+  const [corona, setCorona] = useState([]);
 
-	// useEffect( ()=>{
-//  setData(props.data)
-  // } ,[props])
+	useEffect( ()=>{
+    fetchAreaData('ca')
+    . then(setCorona(props.data));
+    console.log(corona)
+  } ,[props])
 
 	const makePie = d3
 		.pie()
@@ -48,7 +50,7 @@ const Chart = (props)=> {
 
  	const colors = d3.scaleOrdinal(d3.schemeCategory10);
   const format = d3.format(".2f");
-  const data = makePie(d3.values(dummyData));//props.data
+  const data = makePie(d3.values(corona));//props.data
 
   	return(
   		<svg width={500} height={500}>
