@@ -22,14 +22,14 @@ const fetchDateData = date => {
 
 
 const fetchGeneralData = () => {
-	return axios.get('https://covidtracking.com/api/states')
+	return axios.get(baseURL,'us/current.json')
 	.then(response => console.log(responses))
 	.catch(err => console.log(err));
 
 };
 
-const fetchAreaData = area =>  {
-	return axios.get(baseURL,`${area}/.info`)
+const fetchAreaData = area => {
+	return axios.get(baseURL,`${area}/current.json`)
 	.then(res => console.log(res))
 	.catch(err => console.log(err));
 	
