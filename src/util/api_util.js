@@ -17,7 +17,7 @@ export const fetchHistoricAreaData = (area, date) => {
 
 
 export const fetchDateData = date => {
-	return axios.get(baseURL+`us/${date}.json`)
+	return axios.get(baseURL +`us/${date}.json`)
 	.then(res => console.log(res))
 	.catch(err => console.log(err));
 	
@@ -25,7 +25,7 @@ export const fetchDateData = date => {
 
 
 export const fetchGeneralData = () => { // not sure if this is needed
-	return axios.get(baseURL, +'us/current.json')
+	return axios.get(baseURL +'us/current.json')
 	.then(response => console.log(response))
 	.catch(err => console.log(err));
 
@@ -37,3 +37,4 @@ export const fetchAreaData = area => {
 	.catch(err => console.log(err));
 	
 }
+

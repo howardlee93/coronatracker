@@ -2,12 +2,13 @@ import React, {useState, useRef, useEffect} from 'react';
 
 import *  as d3 from 'd3';
 
-import {fetchAreaData} from '../../util/api_util'
-// const dummyData = [{cat: "total", value: 12}, {cat: "dead", value:3}, {cat: "alive", value: 3}];
+//test 
+import {fetchAreaData} from '../../util/api_util';
+
 
 const dummyData= {"positive":178054,  "pending":null,  "negative":3233632,"hospitalizedCurrently":4804,"inIcuCurrently":1412};
 
-// "pending":null
+
 const Pie = ({ data, index, createArc, colors, format }) => (
   <g key={index} className="arc">
     <path className="arc" d={createArc(data)} fill={colors(index)} />
@@ -31,17 +32,14 @@ const Chart = (props)=> {
 
   const [corona, setCorona] = useState([]);
 
-	useEffect( ()=>{
-    fetchAreaData('ca')
-    . then(setCorona(props.data));
-    console.log(corona)
+	useEffect(()=>{
+
+    //call api
   } ,[props])
 
 	const makePie = d3
 		.pie()
     .sort(null)
-
-
 
 	const createArc = d3
 		.arc()
