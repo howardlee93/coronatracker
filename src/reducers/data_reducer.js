@@ -1,6 +1,6 @@
 // area_reducer.js
 
-import {RECEIVE_ALL} from '../action/data_actions';
+import {RECEIVE_ALL, RECEIVE_FILTERED} from '../actions/data_actions';
 
 const dataReducer = (state = [], action) =>{
 	Object.freeze(state);
@@ -16,11 +16,6 @@ const dataReducer = (state = [], action) =>{
 		case RECEIVE_FILTERED:
 			newState = action.payload;
 			return Object.assign(state, {}, newState);
-
-	 
-
-
-
 		
 		default:
 			return state;

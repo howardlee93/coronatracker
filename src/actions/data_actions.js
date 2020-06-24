@@ -45,16 +45,21 @@ export const fetchGeneralData = () =>  dispatch => {
 	.then(res => dispatch(receiveAll(res)))
 }
 
-export const fetchFilteredData = (area, date ) => {
+export const fetchFilteredData = (area, date ) => dispatch => {
 
 	if(!area && date){
 		APIUtil.fetchDateData()
+		.then(res => dispatch(receiveFiltered(res)))
+
 	}else if(area && !date){
 		APIUtil.fetchAreaData()
+		.then(res => dispatch(receiveFiltered(res)))
+
 	}else if (area && date){
-		APIUtil.fetchHistoricAreaData()
+		APIUtil.fetchHistoricAreaData()	
+		.then(res => dispatch(receiveFiltered(res)))
+
 	}
 
-	.then(res => dispatch(receiveFiltered(res)))
 
 }

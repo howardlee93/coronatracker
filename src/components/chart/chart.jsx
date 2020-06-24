@@ -34,7 +34,7 @@ const Chart = (props)=> {
 
 	useEffect(()=>{
 
-    //call api
+    //setCorona(props.data)
   } ,[props])
 
 	const makePie = d3

@@ -3,7 +3,7 @@ import MapContainer from './map/map' //map/map_container';
 
 import Map from './map/map';
 import DateLookupContainer from './date';
-import Chart from './chart/chart';
+import Modal from './modal';
 
 
 
@@ -13,7 +13,7 @@ const Home = () => (
 		<header>
 		  <h1> Interactive Coronavirus Tracker</h1>
 	   </header>
-    <Chart/>
+    <Modal/>
 
     <DateLookupContainer/>
     <Map/>
