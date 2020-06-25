@@ -2,6 +2,11 @@
 
 import {RECEIVE_ALL, RECEIVE_FILTERED} from '../actions/data_actions';
 
+
+
+
+
+
 const dataReducer = (state = [], action) =>{
 	Object.freeze(state);
 	let newState;
@@ -9,12 +14,12 @@ const dataReducer = (state = [], action) =>{
 	switch(action.type){
 
 		case RECEIVE_ALL:
-			newState = action.payload;
+			newState = action.payload.data;
 			return Object.assign({}, state, newState);
 
 
 		case RECEIVE_FILTERED:
-			newState = action.payload;
+			newState = action.payload.data;
 			return Object.assign({}, state, newState);
 		
 		default:

@@ -16,14 +16,14 @@ class Map extends React.Component{
 	onMapClick(area){
 		this.setState({
 			clicked: true,
-			selected:`${area}`},
+			selected:`${area}`.toLowerCase()},
 			()=> {
 				this.props.receiveArea(this.state.selected);
 
 			}
 		);
 
-		// this.props.fetchFilteredData(this.state.selected, null)
+		this.props.fetchFilteredData(this.state.selected, null)
 		// .then(this.props.openModal('chart'));
 
 
