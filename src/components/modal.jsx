@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_actions';
 import ChartContainer from './chart/chart';
 
+		// component = <ChartContainer/>
 
 
 function Modal(modal){
@@ -14,7 +15,7 @@ function Modal(modal){
 	}
 
 	if(modal == "chart"){
-		component = <ChartContainer/>
+		component= <h1> HI I AM A <ChartContainer/></h1>
 	}else{
 		return null;
 	}

@@ -1,16 +1,11 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
 import {receiveDate} from '../actions/form_actions';
+import {fetchFilteredData} from '../actions/data_actions'
 
-
-const DateLookup = () => {
-
+const DateLookup = (props) => {
 
 	const [date, setDate] = useState("");
-
-
-
-	//function to clean up date
 
 
 	function handleDateSubmit(e){
@@ -18,7 +13,9 @@ const DateLookup = () => {
 
 		console.log(date.replace(/-/g,""));
 
-		//props.updateDate(date.replace(/-/g,"")));
+		props.receiveDate(date.replace(/-/g,""))
+		// .then(props.fetchFilteredData(props.area, date))
+		// .then(props.openModal("chart"));
 		
 	}
 
@@ -39,13 +36,16 @@ const DateLookup = () => {
 const mapStateToProps = (state) =>{
 
 	return {
-		date: state.date
+		date: state.form.date,
+		area: state.form.area
 	}
 }
 
 const mapDispatchToProps = dispatch => ({
 
-	receiveDate: date => dispatch(receiveDate(date))
+	receiveDate: date => dispatch(receiveDate(date)),
+	fetchFilteredData: (area, date) => dispatch(fetchFilteredData(area, date)),
+
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(DateLookup);

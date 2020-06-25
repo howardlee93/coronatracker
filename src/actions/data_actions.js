@@ -29,7 +29,7 @@ export const fetchGeneralData = () =>  dispatch => {
 	.then(res => dispatch(receiveAll(res)))
 }
 
-export const fetchFilteredData = (area, date ) => dispatch => {
+export const fetchFilteredData = (area, date) => dispatch => {
 
 	if(!area && date){
 		APIUtil.fetchDateData()

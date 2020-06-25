@@ -21,8 +21,12 @@ class Map extends React.Component{
 				console.log(this.state.selected)
 			}
 		);
+		this.props.receiveArea(this.state.selected);
 
-		//this.props.fetchsStateaData(this.state.selected);
+		// this.props.fetchFilteredData(this.state.selected, null)
+		// .then(this.props.openModal('chart'));
+
+
 
 	};
 
@@ -42,14 +46,10 @@ class Map extends React.Component{
 		};
 
 	}
-
 	
 	render(){
 		
 		return(
-
-
-
 
 			<svg xmlns="http://www.w3.org/2000/svg" width="959" height="593"  style={{fill:'#D3D3D3'}}>
 			<title>Blank US states map</title>

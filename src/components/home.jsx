@@ -1,7 +1,6 @@
 import React from 'react';
 import MapContainer from './map/map' //map/map_container';
 
-import Map from './map/map';
 import DateLookupContainer from './date';
 import Modal from './modal';
 
@@ -16,7 +15,7 @@ const Home = () => (
     <Modal/>
 
     <DateLookupContainer/>
-    <Map/>
+    <MapContainer/>
 
 	 <footer>
        <p>Hi! This web tool was built with React/ Redux and uses Google Sheets.</p>
