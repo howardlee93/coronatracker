@@ -5,19 +5,34 @@
 import {RECEIVE_AREA, RECEIVE_DATE} from '../actions/form_actions';
 
 
-export const formReducer = (state = {}, action) => {
+
+const initialState = {
+	area:'',
+	date: ''
+};
+
+
+export const formReducer = (state = initialState, action) => {
 
 	Object.freeze(state);
+	let newState;
+
 
 	switch(action.type){
 
 
 		case RECEIVE_AREA:
-			return action.area;
+
+			newState = action.area;
+
+			return Object.assign( {}, state, {area: newState});
 
 
 		case RECEIVE_DATE:
-			return action.date;
+
+			newState = action.date;
+
+			return  Object.assign( {}, state,{date: newState});
 
 
 		default:

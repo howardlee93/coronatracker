@@ -1,5 +1,5 @@
 import React from 'react';
-import MapContainer from './map/map' //map/map_container';
+import MapContainer from './map/map_container' //map/map_container';
 
 import DateLookupContainer from './date';
 import Modal from './modal';

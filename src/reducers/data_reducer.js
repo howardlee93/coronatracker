@@ -10,12 +10,12 @@ const dataReducer = (state = [], action) =>{
 
 		case RECEIVE_ALL:
 			newState = action.payload;
-			return Object.assign(state, {}, newState);
+			return Object.assign({}, state, newState);
 
 
 		case RECEIVE_FILTERED:
 			newState = action.payload;
-			return Object.assign(state, {}, newState);
+			return Object.assign({}, state, newState);
 		
 		default:
 			return state;

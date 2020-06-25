@@ -18,10 +18,10 @@ class Map extends React.Component{
 			clicked: true,
 			selected:`${area}`},
 			()=> {
-				console.log(this.state.selected)
+				this.props.receiveArea(this.state.selected);
+
 			}
 		);
-		this.props.receiveArea(this.state.selected);
 
 		// this.props.fetchFilteredData(this.state.selected, null)
 		// .then(this.props.openModal('chart'));

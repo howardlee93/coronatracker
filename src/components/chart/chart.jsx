@@ -2,12 +2,6 @@ import React, {useState, useRef, useEffect} from 'react';
 
 import *  as d3 from 'd3';
 
-//test 
-import {fetchAreaData} from '../../util/api_util';
-
-
-const dummyData= {"positive":178054,  "pending":null,  "negative":3233632,"hospitalizedCurrently":4804,"inIcuCurrently":1412};
-
 
 const Pie = ({ data, index, createArc, colors, format }) => (
   <g key={index} className="arc">
@@ -34,7 +28,7 @@ const Chart = (props)=> {
 
 	useEffect(()=>{
 
-    //setCorona(props.data)
+    setCorona(props.data)
   } ,[props])
 
 	const makePie = d3

@@ -13,9 +13,10 @@ const DateLookup = (props) => {
 
 		console.log(date.replace(/-/g,""));
 
-		props.receiveDate(date.replace(/-/g,""))
-		// .then(props.fetchFilteredData(props.area, date))
-		// .then(props.openModal("chart"));
+		props.receiveDate(date.replace(/-/g,""));
+
+		props.fetchFilteredData(props.area, date)
+		.then(props.openModal("chart"));
 		
 	}
 
