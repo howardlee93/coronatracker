@@ -1,6 +1,6 @@
 // chart_container.js
 import {connect} from 'react-redux';
-import {fetchCandidateData} from '../../actions/data_actions'
+import { fetchFilteredData, fetchGeneralData } from '../../actions/data_actions'
 
 
 
@@ -12,10 +12,11 @@ const mapStateToProps = state => ({
 	data: state.data
 });
 
+//action dont really need actions in this since this is to present data 
 
 const mapDispatchToProps = dispatch => ({
 	fetchGeneralData: () => dispatch(fetchGeneralData()),
-	
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Chart);

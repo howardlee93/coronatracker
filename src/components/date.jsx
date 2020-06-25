@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
+import {receiveDate} from '../actions/form_actions';
 
 
 const DateLookup = () => {
@@ -34,18 +35,17 @@ const DateLookup = () => {
 }
 
 
-export default DateLookup;
 
-// const mapStateToProps = (state) =>{
+const mapStateToProps = (state) =>{
 
-// 	return {
-// 		date: state.date
-// 	}
-// }
+	return {
+		date: state.date
+	}
+}
 
-// const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = dispatch => ({
 
-// 	updateDate: date => dispatch(updateDate(date))
-// })
+	receiveDate: date => dispatch(receiveDate(date))
+})
 
-// export default connect(mapStateToProps, mapDispatchToProps)(dateLookup);
+export default connect(mapStateToProps, mapDispatchToProps)(DateLookup);
