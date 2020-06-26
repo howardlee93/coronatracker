@@ -31,19 +31,22 @@ export const fetchGeneralData = () =>  dispatch => {
 
 export const fetchFilteredData = (area, date) => dispatch => {
 
-	if(!area && date){
-		APIUtil.fetchDateData(date)
-		.then(res => dispatch(receiveFiltered(res)))
+	//maybe refactor later??
+		if(!area && date){
+			APIUtil.fetchDateData(date)
+			.then(res => dispatch(receiveFiltered(res.data)))
 
-	}else if(area && !date){
-		APIUtil.fetchAreaData(area)
-		.then(res => dispatch(receiveFiltered(res)))
+		}else if(area && !date){
+			APIUtil.fetchAreaData(area)
+			.then(res => dispatch(receiveFiltered(res.data)))
 
-	}else if (area && date){
-		APIUtil.fetchHistoricAreaData(area, date)	
-		.then(res => dispatch(receiveFiltered(res)))
+		}else if (area && date){
+			APIUtil.fetchHistoricAreaData(area, date)	
+			.then(res => dispatch(receiveFiltered(res.data)))
+		}
 
-	}
+		// then(res => dispatch(receiveFiltered(res)));
+
 
 
 }

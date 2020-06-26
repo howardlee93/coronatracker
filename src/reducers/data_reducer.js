@@ -19,7 +19,7 @@ const dataReducer = (state = [], action) =>{
 
 
 		case RECEIVE_FILTERED:
-			newState = action.payload.data;
+			newState = action.filtered;
 			return Object.assign({}, state, newState);
 		
 		default:
