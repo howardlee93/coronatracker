@@ -3,10 +3,9 @@ import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_actions';
 import ChartContainer from './chart/chart';
 
-		// component = <ChartContainer/>
 
 
-function Modal(modal){
+function Modal({modal, closeModal}){
 	
 	let component;
 
@@ -15,7 +14,7 @@ function Modal(modal){
 	}
 
 	if(modal == "chart"){
-		component= <h1> HI I AM A <ChartContainer/></h1>
+		component= <ChartContainer/>
 	}else{
 		return null;
 	}
@@ -23,7 +22,7 @@ function Modal(modal){
 
 
 	return(
-		<div onClick={closeModal}>
+		<div className="modal" onClick={closeModal}>
 		{component}
 		</div>
 
