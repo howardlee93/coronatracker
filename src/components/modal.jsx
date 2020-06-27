@@ -1,29 +1,29 @@
-import React from 'react';
+import React  from 'react';
 import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_actions';
-import ChartContainer from './chart/chart';
+import ChartContainer from './chart/chart_container';
+
+import { fetchFilteredData } from '../actions/data_actions';
 
 
-
-function Modal({modal, closeModal}){
+function Modal(props){
 	
 	let component;
 
-	if (!modal){
+	if (!props.modal){
 		return null;
 	}
 
-	if(modal == "chart"){
+	if(props.modal === "chart"){
 		component= <ChartContainer/>
 	}else{
 		return null;
 	}
 
-
-
+	
 	return(
-		<div className="modal" onClick={closeModal}>
-		{component}
+		<div className="modal" onClick={props.closeModal}>
+		<h1>HI</h1>
 		</div>
 
 		)
@@ -32,11 +32,13 @@ function Modal({modal, closeModal}){
 
 
 const mapStateToProps = state =>({
-	modal: state.modal
+	modal: state.modal,
+	area: state.form.area
 });
 
 const mapDispatchToProps = dispatch =>({
-	closeModal: ()=> dispatch(closeModal())
+	closeModal: ()=> dispatch(closeModal()),
+	fetchFilteredData: (area)=> dispatch(fetchFilteredData(area, null))
 });
 
 

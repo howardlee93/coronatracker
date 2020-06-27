@@ -9,13 +9,14 @@ import Chart from './chart';
 
 
 const mapStateToProps = state => ({
-	data: state.data
+	data: state.data,
+	area: state.form.area,
+	date: state.form.date
 });
 
-//action dont really need actions in this since this is to present data 
 
 const mapDispatchToProps = dispatch => ({
-	fetchGeneralData: () => dispatch(fetchGeneralData()),
+	fetchFilteredData: (area, date) => dispatch(fetchFilteredData(area, date)),
 
 });
 

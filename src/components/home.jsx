@@ -5,8 +5,6 @@ import DateLookupContainer from './date';
 import Modal from './modal';
 
 
-
-
 const Home = () => (
 	<div>
 		<header>
@@ -14,7 +12,6 @@ const Home = () => (
 	   </header>
     <Modal/>
 
-    <DateLookupContainer/>
     <MapContainer/>
 
 	 <footer>

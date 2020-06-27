@@ -13,9 +13,11 @@ const DateLookup = (props) => {
 
 		console.log(date.replace(/-/g,""));
 
-		props.receiveDate(date.replace(/-/g,""));
+		let formatedDate = date.replace(/-/g,"");
+		
+		props.receiveDate(formatedDate);
 
-		props.fetchFilteredData(props.area, date)
+		props.fetchFilteredData(props.area, formatedDate)
 		.then(props.openModal("chart"));
 		
 	}
@@ -26,7 +28,7 @@ const DateLookup = (props) => {
 
 			<input type='date' value={date} onChange={e=>setDate(e.target.value)}/>
 			<br/>
-			<button type="submit"> Look up the date </button>
+			<button type="submit"> Refine the data by date</button>
 
 		</form>
 		)
