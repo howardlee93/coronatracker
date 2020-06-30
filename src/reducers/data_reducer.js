@@ -3,10 +3,6 @@
 import {RECEIVE_ALL, RECEIVE_FILTERED} from '../actions/data_actions';
 
 
-
-
-
-
 const dataReducer = (state = [], action) =>{
 	Object.freeze(state);
 	let newState;
