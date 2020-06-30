@@ -1,5 +1,7 @@
 // chart_container.js
 import {connect} from 'react-redux';
+
+ 
 import { fetchFilteredData, fetchGeneralData } from '../../actions/data_actions'
 
 

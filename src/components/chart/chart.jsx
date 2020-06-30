@@ -2,8 +2,6 @@ import React, {useState, useRef, useEffect} from 'react';
 
 import *  as d3 from 'd3';
 
-import DateLookupContainer from '../date';
-
 
 const dummyData = {"date":20200626,"state":"CA","positive":200461,"negative":3570853,"pending":null,"hospitalizedCurrently":5639,"hospitalizedCumulative":null,"inIcuCurrently":1570,"inIcuCumulative":null,"onVentilatorCurrently":null,"onVentilatorCumulative":null,"recovered":null,"dataQualityGrade":"B","lastUpdateEt":"6/26/2020 00:00","dateModified":"2020-06-26T00:00:00Z","checkTimeEt":"06/25 20:00","death":5812,"hospitalized":null,"dateChecked":"2020-06-26T00:00:00Z","totalTestsViral":3771314,"positiveTestsViral":null,"negativeTestsViral":null,"positiveCasesViral":200461,"fips":"06","positiveIncrease":4890,"negativeIncrease":72079,"total":3771314,"totalTestResults":3771314,"totalTestResultsIncrease":76969,"posNeg":3771314,"deathIncrease":79,"hospitalizedIncrease":0,"hash":"cd112266f42d3f0247396332d43f881e67a91f10","commercialScore":0,"negativeRegularScore":0,"negativeScore":0,"positiveScore":0,"score":0,"grade":""}
 
@@ -43,9 +41,6 @@ const Chart = (props)=> {
 
 	useEffect(()=>{
 
-
-    // props.fetchFilteredData(props.area, null)
-
       let data = {
 
       totalTestResults: props.data.totalTestResults,
@@ -53,6 +48,7 @@ const Chart = (props)=> {
       positiveCasesViral: props.data.positiveCasesViral,
 
       deaths: props.data.deaths,
+
       hospitalizedCurrently: props.data.hospitalizedCurrently
     }
     
@@ -70,13 +66,37 @@ const Chart = (props)=> {
 		.innerRadius(120)
     .outerRadius(200);
 
+
+  const labelArc = d3
+    .append('text')
+    .text(d3.keys(corona));
+
+
+
+
+
+
+
  	const colors = d3.scaleOrdinal(d3.schemeCategory10);
   const format = d3.format(".2f");
   const data = makePie(d3.values(corona));//props.data
 
+  
+
+  const formatDate = (date)=>{
+    let year = date.toString().slice(0,4);
+    let month = date.toString().slice(4,6);
+    let day = date.toString().slice(6,8);
+
+    return `${month} / ${day} / ${year}`;
+
+
+  };
+  
+
   	return(
       <div>
-      <h1 style={{color:'white'}}> Test results for {props.data.state} on {props.data.date}</h1>
+      <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
   		<svg width={500} height={500}>
   		<g transform={`translate(${200} ${200})`}>
   			
