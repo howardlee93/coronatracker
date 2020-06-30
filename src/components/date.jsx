@@ -3,9 +3,23 @@ import {connect} from 'react-redux';
 import {receiveDate} from '../actions/form_actions';
 import {fetchFilteredData} from '../actions/data_actions'
 
+
+const styles ={
+	input:{
+		fontFamily:'san-serif',
+
+	},
+	button:{
+		color: 'black'
+	}
+}
+
+
+
 const DateLookup = (props) => {
 
 	const [date, setDate] = useState("");
+
 
 
 	function handleDateSubmit(e){
@@ -13,12 +27,12 @@ const DateLookup = (props) => {
 
 		console.log(date.replace(/-/g,""));
 
-		let formatedDate = date.replace(/-/g,"");
+		// let formatedDate = date.replace(/-/g,"");
 		
-		props.receiveDate(formatedDate);
+		// props.receiveDate(formatedDate);
 
-		props.fetchFilteredData(props.area, formatedDate)
-		.then(props.openModal("chart"));
+		// props.fetchFilteredData(props.area, formatedDate)
+		// .then(props.openModal("chart"));
 		
 	}
 
@@ -28,7 +42,7 @@ const DateLookup = (props) => {
 
 			<input type='date' value={date} onChange={e=>setDate(e.target.value)}/>
 			<br/>
-			<button type="submit"> Refine the data by date</button>
+			<button style={styles.button} type="submit"> Refine the data by date</button>
 
 		</form>
 		)
