@@ -6,11 +6,18 @@ import {fetchFilteredData} from '../actions/data_actions'
 
 const styles ={
 	input:{
-		fontFamily:'san-serif',
+		fontFamily:'sans-serif',
+		padding:'15px'
 
 	},
+
 	button:{
-		color: 'black'
+		backgroundColor: 'black',
+		color: 'white',
+		margin:'15px',
+ 		boxShadow: 'none',
+ 		borderRadius: '15px',
+
 	}
 }
 
