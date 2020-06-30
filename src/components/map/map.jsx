@@ -9,30 +9,38 @@ class Map extends React.Component{
 		this.state = {
 			clicked: false,
 			selected:'',
-			hover: false
 		}
 
 	};
 
 	
 	onMapClick(area){
+
 		this.setState({
-			clicked: true,
 			selected:`${area}`.toLowerCase()},
-			() => {
-				console.log(this.state.selected);				
-				this.props.fetchFilteredData(this.state.selected, null);
+			()=>{
+				
+				// this.props.fetchFilteredData(this.state.selected, 'current');
 
 				this.props.receiveArea(this.state.selected);
-
-				this.props.openModal("chart");	
 
 
 			}
 		);
 
+
 	};
 
+	async componentDidUpdate(prevState, nextState){
+		if (!prevState.selected && this.state.selected !== prevState.selected && this.state.selected !=nextState.selected){
+
+				this.props.fetchFilteredData(this.state.selected, null);
+		
+	// 		 	// await this.props.openModal('chart');	
+
+
+		}
+	}
 
 
 	
