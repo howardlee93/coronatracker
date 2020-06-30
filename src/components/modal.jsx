@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
 import {closeModal} from '../actions/modal_actions';
 import ChartContainer from './chart/chart_container';

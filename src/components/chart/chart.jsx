@@ -60,7 +60,7 @@ const Chart = (props)=> {
 
 	const makePie = d3
 		.pie()
-    .sort(null)
+    .sort(null)  
 
 	const createArc = d3
 		.arc()
@@ -70,28 +70,28 @@ const Chart = (props)=> {
 
 //ylabels suck
 
-  const label = d3.select("svg")
-    .append('text')
-    .text(d3.keys(corona))
-    .attr("text-anchor", "middle")
-    .attr("fill", "#888")
-    .style("visibility", "hidden");
+  // const label = makePie
+  //   .append('text')
+  //   .text(d3.keys(corona))
+  //   .attr("text-anchor", "middle")
+  //   .attr("fill", "#888")
+  //   .style("visibility", "hidden");
 
-  label
-    .append("tspan")
-    .attr("class", "percentage")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("dy", "-0.1em")
-    .attr("font-size", "3em")
-    .text("");
+  // label
+  //   .append("tspan")
+  //   .attr("class", "percentage")
+  //   .attr("x", 0)
+  //   .attr("y", 0)
+  //   .attr("dy", "-0.1em")
+  //   .attr("font-size", "3em")
+  //   .text("");
 
-  label
-    .append("tspan")
-    .attr("x", 0)
-    .attr("y", 0)
-    .attr("dy", "1.5em")
-    .text("of visits begin with this sequence");
+  // label
+  //   .append("tspan")
+  //   .attr("x", 0)
+  //   .attr("y", 0)
+  //   .attr("dy", "1.5em")
+  //   .text("of visits begin with this sequence");
 
 
 
@@ -115,7 +115,7 @@ const Chart = (props)=> {
   	return(
       <div>
       <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
-  		<svg width={500} height={500}>
+  		<svg width={400} height={450}>
   		<g transform={`translate(${200} ${200})`}>
   			
   			{data.map((d, i) => (
