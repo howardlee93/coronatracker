@@ -20,7 +20,7 @@ class Map extends React.Component{
 			selected:`${area}`.toLowerCase()},
 			()=>{
 				
-				// this.props.fetchFilteredData(this.state.selected, 'current');
+				this.props.fetchFilteredData(this.state.selected, 'current');
 
 				this.props.receiveArea(this.state.selected);
 
@@ -32,14 +32,14 @@ class Map extends React.Component{
 	};
 
 	async componentDidUpdate(prevState, nextState){
-		if (!prevState.selected && this.state.selected !== prevState.selected && this.state.selected !=nextState.selected){
+	// 	if (!prevState.selected && this.state.selected !== prevState.selected && this.state.selected !=nextState.selected){
 
-				this.props.fetchFilteredData(this.state.selected, null);
+	// 			this.props.fetchFilteredData(this.state.selected, null);
 		
-	// 		 	// await this.props.openModal('chart');	
+	 	// await this.props.openModal('chart');	
 
 
-		}
+	// 	}
 	}
 
 
