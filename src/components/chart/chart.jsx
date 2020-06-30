@@ -43,13 +43,14 @@ const Chart = (props)=> {
 
       let data = {
 
-      totalTestResults: props.data.totalTestResults,
+      // totalTestResults: props.data.totalTestResults,
 
-      positiveCasesViral: props.data.positiveCasesViral,
+      // positiveCasesViral: props.data.positiveCasesViral,
 
-      deaths: props.data.deaths,
+      death: props.data.death,
 
-      hospitalizedCurrently: props.data.hospitalizedCurrently
+      hospitalizedCurrently: props.data.hospitalizedCurrently,
+      recovered: props.data.recovered
     }
     
 
@@ -67,13 +68,30 @@ const Chart = (props)=> {
     .outerRadius(200);
 
 
-  const labelArc = d3
+//ylabels suck
+
+  const label = d3.select("svg")
     .append('text')
-    .text(d3.keys(corona));
+    .text(d3.keys(corona))
+    .attr("text-anchor", "middle")
+    .attr("fill", "#888")
+    .style("visibility", "hidden");
 
+  label
+    .append("tspan")
+    .attr("class", "percentage")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("dy", "-0.1em")
+    .attr("font-size", "3em")
+    .text("");
 
-
-
+  label
+    .append("tspan")
+    .attr("x", 0)
+    .attr("y", 0)
+    .attr("dy", "1.5em")
+    .text("of visits begin with this sequence");
 
 
 

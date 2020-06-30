@@ -5,6 +5,7 @@ import {fetchFilteredData} from '../actions/data_actions'
 
 
 const styles ={
+
 	input:{
 		fontFamily:'sans-serif',
 		padding:'15px'
@@ -14,7 +15,7 @@ const styles ={
 	button:{
 		backgroundColor: 'black',
 		color: 'white',
-		margin:'15px',
+		margin:'5px',
  		boxShadow: 'none',
  		borderRadius: '15px',
 

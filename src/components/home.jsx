@@ -15,7 +15,7 @@ const Home = () => (
     <MapContainer/>
 
 	 <footer>
-       <p>Hi! This web tool was built with React/ Redux and uses Google Sheets.</p>
+       <p>Hi! This web tool was built with React/ Redux and utilizes <a href='https://covidtracking.com/'> Covid Tracking Project's API.</a> </p>
 
                 <p> Copyright Howard Lee {new Date().getFullYear()}</p>
 
