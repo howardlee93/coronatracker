@@ -1,7 +1,6 @@
 import React from 'react';
 import MapContainer from './map/map_container' //map/map_container';
 
-import DateLookupContainer from './date';
 import Modal from './modal';
 
 
@@ -15,7 +14,7 @@ const Home = () => (
     <MapContainer/>
 
 	 <footer>
-       <p>Hi! This web tool was built with React/ Redux and utilizes <a href='https://covidtracking.com/'> Covid Tracking Project's API.</a> </p>
+      <p>Hi! This web tool was built with React/ Redux and utilizes <a href='https://covidtracking.com/'> Covid Tracking Project's API.</a> </p>
 
                 <p> Copyright Howard Lee {new Date().getFullYear()}</p>
 

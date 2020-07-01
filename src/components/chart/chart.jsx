@@ -16,14 +16,6 @@ const dummyData = {"date":20200626,"state":"CA","positive":200461,"negative":357
 "negativeScore":0,"positiveScore":0,"score":0,"grade":""}
 
 
-//totalTestResults
-
-//positiveCasesViral
-
-//deaths
-// hospitalizedCurrently
-
-
 
 
 const Pie = ({ data, index, createArc, colors, format }) => (
@@ -45,19 +37,21 @@ const Pie = ({ data, index, createArc, colors, format }) => (
 const Chart = (props)=> {
 
   const [corona, setCorona] = useState([]);
+  const [clickedFlag, setclickedFlag]  = useState(false);
+
 
 	useEffect(()=>{
 
       let data = {
 
-      // totalTestResults: props.data.totalTestResults,
+      totalTestResults: props.data.totalTestResults,
 
-      // positiveCasesViral: props.data.positiveCasesViral,
+      positiveCasesViral: props.data.positiveCasesViral,
 
-      death: props.data.death,
+      // death: props.data.death,
 
-      hospitalizedCurrently: props.data.hospitalizedCurrently,
-      recovered: props.data.recovered
+      // hospitalizedCurrently: props.data.hospitalizedCurrently,
+      // recovered: props.data.recovered
     }
     
 
@@ -73,31 +67,6 @@ const Chart = (props)=> {
 		.arc()
 		.innerRadius(120)
     .outerRadius(200);
-
-//ylabels suck
-
-  // const label = d3.group("arc")
-  //   .append('text')
-  //   .text(d3.keys(corona))
-  //   .attr("text-anchor", "middle")
-  //   .attr("fill", "#888")
-  //   .style("visibility", "hidden");
-
-  // label
-  //   .append("tspan")
-  //   .attr("class", "percentage")
-  //   .attr("x", 0)
-  //   .attr("y", 0)
-  //   .attr("dy", "-0.1em")
-  //   .attr("font-size", "3em")
-  //   .text("");
-
-  // label
-  //   .append("tspan")
-  //   .attr("x", 0)
-  //   .attr("y", 0)
-  //   .attr("dy", "1.5em")
-  //   .text("of visits begin with this sequence");
 
 
 
@@ -120,8 +89,28 @@ const Chart = (props)=> {
 
   const changeDataSet = () => {
 
-    alert("the click works lol")
+    alert("the click works lol");
+    setclickedFlag(!clickedFlag);
 
+    if(!clickedFlag){
+        let altDataSet = {
+        death: props.data.death,
+        hospitalizedCurrently: props.data.hospitalizedCurrently,
+        recovered: props.data.recovered
+      };
+      setCorona(altDataSet);
+
+    }else{
+      let data = {
+        totalTestResults: props.data.totalTestResults,
+
+        positiveCasesViral: props.data.positiveCasesViral,
+      };
+      setCorona(data);
+
+  }
+
+    
   }
   
 
