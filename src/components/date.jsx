@@ -17,7 +17,9 @@ const styles ={
 		color: 'white',
 		margin:'5px',
  		boxShadow: 'none',
- 		borderRadius: '15px',
+ 		borderRadius: '5px',
+ 		fontSize:'18px',
+ 		border:'none'
 
 	}
 }
@@ -35,12 +37,11 @@ const DateLookup = (props) => {
 
 		console.log(date.replace(/-/g,""));
 
-		// let formatedDate = date.replace(/-/g,"");
+		let formatedDate = date.replace(/-/g,"");
 		
-		// props.receiveDate(formatedDate);
+		props.receiveDate(formatedDate);
 
-		// props.fetchFilteredData(props.area, formatedDate)
-		// .then(props.openModal("chart"));
+		props.fetchFilteredData(props.area, formatedDate)
 		
 	}
 
@@ -48,9 +49,9 @@ const DateLookup = (props) => {
 	return(
 		<form onSubmit={handleDateSubmit}>
 
-			<input type='date' value={date} onChange={e=>setDate(e.target.value)}/>
+			<input type='date' value={date} min="2020-01-01" onChange={e=>setDate(e.target.value) }/>
 			<br/>
-			<button style={styles.button} type="submit"> Refine the data by date</button>
+			<button style={styles.button} type="submit" >Change the date</button>
 
 		</form>
 		)
