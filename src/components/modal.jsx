@@ -7,6 +7,17 @@ import DateLookupContainer from './date';
 
 function Modal(props){
 
+	const button={
+		backgroundColor: 'black',
+		color: 'white',
+		margin:'5px',
+ 		boxShadow: 'none',
+ 		borderRadius: '5px',
+ 		fontSize:'18px',
+ 		border:'none'
+
+	}
+
 	let component;
 
 	if (!props.modal){
@@ -21,9 +32,12 @@ function Modal(props){
 
 	
 	return(
-		<div className="modal" onClick={props.closeModal}>
+		<div className="modal">
 		{component}
 		<DateLookupContainer/>
+
+		<button style={button} onClick={props.closeModal}>Close chart</button>
+
 		</div>
 
 		)
