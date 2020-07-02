@@ -1,24 +1,10 @@
-import React, {useState, useRef, useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import *  as d3 from 'd3';
 
 
-const dummyData = {"date":20200626,"state":"CA","positive":200461,"negative":3570853,"pending":null,
-"hospitalizedCurrently":5639,"hospitalizedCumulative":null,
-"inIcuCurrently":1570,"inIcuCumulative":null,
-"onVentilatorCurrently":null,
-"onVentilatorCumulative":null,"recovered":null,"dataQualityGrade":"B","lastUpdateEt":"6/26/2020 00:00",
-"dateModified":"2020-06-26T00:00:00Z","checkTimeEt":"06/25 20:00","death":5812,"hospitalized":null,
-"dateChecked":"2020-06-26T00:00:00Z","totalTestsViral":3771314,"positiveTestsViral":null,"negativeTestsViral":null,
-"positiveCasesViral":200461,"fips":"06","positiveIncrease":4890,"negativeIncrease":72079,"total":3771314,
-"totalTestResults":3771314,"totalTestResultsIncrease":76969,"posNeg":3771314,"deathIncrease":79,
-"hospitalizedIncrease":0,"hash":"cd112266f42d3f0247396332d43f881e67a91f10","commercialScore":0,"negativeRegularScore":0,
-"negativeScore":0,"positiveScore":0,"score":0,"grade":""}
+const Pie = ({data, index, createArc, colors }) => (
 
-
-
-
-const Pie = ({ data, index, createArc, colors, format }) => (
   <g key={index} className="arc">
     <path className="arc" d={createArc(data)} fill={colors(index)} />
     <text
@@ -27,9 +13,12 @@ const Pie = ({ data, index, createArc, colors, format }) => (
       alignmentBaseline="middle"
       fill="white"
       fontSize="10"
-    >
-      {format(data.value)}
-    </text>
+      fontWeight='bold'
+    > 
+      {data.data.key}:
+      {data.value}
+      
+      </text>
   </g>
 );
 
@@ -44,37 +33,39 @@ const Chart = (props)=> {
 
       let data = {
 
-      totalTestResults: props.data.totalTestResults,
+      "totalTestResults": props.data.totalTestResults,
 
-      positiveCasesViral: props.data.positiveCasesViral,
-
-      // death: props.data.death,
-
-      // hospitalizedCurrently: props.data.hospitalizedCurrently,
-      // recovered: props.data.recovered
+      "positiveCasesViral": props.data.positiveCasesViral,
     }
     
-
     setCorona(data);
 
-  } ,[props])
+  } ,[props]);
+
+  const cleanupData = data => {
+  
+    let obj = Object.keys(data).map(key =>{
+      return {key: key, value:data[key]}
+    })
+
+    return obj;
+  }
 
 	const makePie = d3
 		.pie()
+    .value(d => d.value)
     .sort(null)  
+
 
 	const createArc = d3
 		.arc()
-		.innerRadius(120)
-    .outerRadius(200);
+		.innerRadius(70)
+    .outerRadius(150);
 
-
-
+ 
  	const colors = d3.scaleOrdinal(d3.schemeCategory10);
-  const format = d3.format(".2f");
-  const data = makePie(d3.values(corona));//props.data
+  const data = makePie(cleanupData(corona));
 
-  
 
   const formatDate = (date)=>{
     let year = date.toString().slice(0,4);
@@ -83,57 +74,62 @@ const Chart = (props)=> {
 
     return `${month} / ${day} / ${year}`;
 
-
   };
 
 
   const changeDataSet = () => {
+    console.log(data);
 
-    alert("the click works lol");
+
     setclickedFlag(!clickedFlag);
 
+    let altDataSet;
+
     if(!clickedFlag){
-        let altDataSet = {
-        death: props.data.death,
-        hospitalizedCurrently: props.data.hospitalizedCurrently,
-        recovered: props.data.recovered
+        altDataSet = {
+        "death": props.data.death,
+        "hospitalizedCurrently": props.data.hospitalizedCurrently,
+        "recovered": props.data.recovered
       };
       setCorona(altDataSet);
 
     }else{
-      let data = {
-        totalTestResults: props.data.totalTestResults,
+      altDataSet = {
+        "totalTestResults": props.data.totalTestResults,
 
-        positiveCasesViral: props.data.positiveCasesViral,
+        "positiveCasesViral": props.data.positiveCasesViral,
       };
-      setCorona(data);
+      setCorona(altDataSet);
 
+    }    
   }
 
-    
-  }
-  
 
-  	return(
+  return(
       <div>
       <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
-  		<svg width={400} height={450} onClick={changeDataSet}>
-  		<g transform={`translate(${200} ${200})`}>
+  		<h2 style={{color:'white'}}> Click on the chart for more details</h2>
+
+      <svg width={400} height={400} onClick={changeDataSet}>
+  		<g transform={`translate(160 150)`}>
+
+
   			{data.map((d, i) => (
   			<Pie 
+           
   				key={i}
   				data={d}
   				index={i}
   				createArc={createArc}
   				colors={colors}
-  				format={format}
   				/>
   			))}
+        <legend/>
   		</g>
   		</svg>
 
       </div>
-  		)
+  )
 
 
 };
