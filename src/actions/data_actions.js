@@ -1,16 +1,12 @@
 
 // area_actions.js
 
-
 import * as APIUtil from '../util/api_util';
 
-import {openModal} from './modal_actions'
+import {openModal} from './modal_actions';
 
-export const RECEIVE_ALL = 'RECEIVE_ALL';
 
 export const RECEIVE_FILTERED = 'RECEIVE_FILTERED';
-
-
 
 
 const receiveFiltered = filtered => ({
@@ -18,18 +14,6 @@ const receiveFiltered = filtered => ({
 	filtered
 });
 
-
-const receiveAll = all => ({
-	type: RECEIVE_ALL,
-	all
-
-});
-
-
-export const fetchGeneralData = () =>  dispatch => {
-	return APIUtil.fetchGeneralData()
-	.then(res => dispatch(receiveAll(res)))
-}
 
 
 export const fetchFilteredData = (area, date) => dispatch => {
