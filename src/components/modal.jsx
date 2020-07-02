@@ -33,15 +33,14 @@ function Modal(props){
 	
 	return(
 		<div className="modal">
-		{component}
-		<DateLookupContainer/>
+			{component}
+			<DateLookupContainer/>
 
-		<button style={button} onClick={props.closeModal}>Close chart</button>
+			<button style={button} onClick={props.closeModal}>Close chart</button>
 
 		</div>
 
 		)
-
 };
 
 
