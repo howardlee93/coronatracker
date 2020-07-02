@@ -1,6 +1,6 @@
 // area_reducer.js
 
-import {RECEIVE_ALL, RECEIVE_FILTERED} from '../actions/data_actions';
+import {RECEIVE_FILTERED} from '../actions/data_actions';
 
 
 const dataReducer = (state = [], action) =>{
@@ -8,11 +8,6 @@ const dataReducer = (state = [], action) =>{
 	let newState;
 
 	switch(action.type){
-
-		case RECEIVE_ALL:
-			newState = action.payload.data;
-			return Object.assign({}, state, newState);
-
 
 		case RECEIVE_FILTERED:
 			newState = action.filtered;

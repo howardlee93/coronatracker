@@ -1,10 +1,6 @@
 // form_reducer.js
 
-
-
 import {RECEIVE_AREA, RECEIVE_DATE} from '../actions/form_actions';
-
-
 
 const initialState = {
 	area:'',
