@@ -33,9 +33,9 @@ const Chart = (props)=> {
 
       let data = {
 
-      "totalTestResults": props.data.totalTestResults,
+      "total cases": props.data.totalTestResults,
 
-      "positiveCasesViral": props.data.positiveCasesViral,
+      "positive cases": props.data.positiveCasesViral,
     }
     
     setCorona(data);
@@ -60,7 +60,7 @@ const Chart = (props)=> {
 	const createArc = d3
 		.arc()
 		.innerRadius(70)
-    .outerRadius(150);
+    .outerRadius(200);
 
  
  	const colors = d3.scaleOrdinal(d3.schemeCategory10);
@@ -88,7 +88,7 @@ const Chart = (props)=> {
     if(!clickedFlag){
         altDataSet = {
         "death": props.data.death,
-        "hospitalizedCurrently": props.data.hospitalizedCurrently,
+        "hospitalized": props.data.hospitalizedCurrently,
         "recovered": props.data.recovered
       };
       setCorona(altDataSet);
@@ -110,8 +110,8 @@ const Chart = (props)=> {
       <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
   		<h2 style={{color:'white'}}> Click on the chart for more details</h2>
 
-      <svg width={400} height={400} onClick={changeDataSet}>
-  		<g transform={`translate(160 150)`}>
+      <svg width='400px' height='400px' onClick={changeDataSet}>
+  		<g transform={`translate(200 200)`}>
 
 
   			{data.map((d, i) => (

@@ -24,31 +24,16 @@ class Map extends React.Component{
 
 				this.props.receiveArea(this.state.selected);
 
-
 			}
 		);
 
-
 	};
 
-	async componentDidUpdate(prevState, nextState){
-	// 	if (!prevState.selected && this.state.selected !== prevState.selected && this.state.selected !=nextState.selected){
-
-	// 			this.props.fetchFilteredData(this.state.selected, null);
-		
-	 	// await this.props.openModal('chart');	
-
-
-	// 	}
-	}
-
-
-	
 	render(){
 		
 		return(
 
-			<svg xmlns="http://www.w3.org/2000/svg" width="959" height="593"  style={{fill:'#D3D3D3'}}>
+			<svg xmlns="http://www.w3.org/2000/svg" width="959" height="593"  style={{fill:'#D3D3D3'}}> 
 			<title>Blank US states map</title>
 			<defs>
   

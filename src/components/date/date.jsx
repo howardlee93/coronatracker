@@ -1,7 +1,4 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
-import {receiveDate} from '../actions/form_actions';
-import {fetchFilteredData} from '../actions/data_actions'
 
 
 const styles ={
@@ -24,12 +21,9 @@ const styles ={
 	}
 }
 
-
-
 const DateLookup = (props) => {
 
 	const [date, setDate] = useState("");
-
 
 
 	function handleDateSubmit(e){
@@ -45,8 +39,8 @@ const DateLookup = (props) => {
 		
 	}
 
-
 	return(
+		
 		<form onSubmit={handleDateSubmit}>
 
 			<input type='date' value={date} min="2020-01-01" onChange={e=>setDate(e.target.value) }/>
@@ -57,21 +51,4 @@ const DateLookup = (props) => {
 		)
 }
 
-
-
-const mapStateToProps = (state) =>{
-
-	return {
-		date: state.form.date,
-		area: state.form.area
-	}
-}
-
-const mapDispatchToProps = dispatch => ({
-
-	receiveDate: date => dispatch(receiveDate(date)),
-	fetchFilteredData: (area, date) => dispatch(fetchFilteredData(area, date)),
-
-})
-
-export default connect(mapStateToProps, mapDispatchToProps)(DateLookup);
+export default DateLookup;
