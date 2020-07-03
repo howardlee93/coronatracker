@@ -32,10 +32,11 @@ const Chart = (props)=> {
 	useEffect(()=>{
 
       let data = {
+      	negative: props.data.negative,
+      	positive : props.data.positive
+      // "totalTestsViral": props.data.totalTestsViral,
 
-      "total cases": props.data.totalTestResults,
-
-      "positive cases": props.data.positiveCasesViral,
+      // "positiveCasesViral": props.data.positiveCasesViral,
     }
     
     setCorona(data);
@@ -53,17 +54,17 @@ const Chart = (props)=> {
 
 	const makePie = d3
 		.pie()
-    .value(d => d.value)
-    .sort(null)  
+    	.value(d => d.value)
+    	.sort(null)  
 
 
-	const createArc = d3
+const createArc = d3
 		.arc()
 		.innerRadius(70)
-    .outerRadius(200);
+    	.outerRadius(200);
 
  
- 	const colors = d3.scaleOrdinal(d3.schemeCategory10);
+ const colors = d3.scaleOrdinal(d3.schemeCategory10);
   const data = makePie(cleanupData(corona));
 
 
@@ -88,16 +89,18 @@ const Chart = (props)=> {
     if(!clickedFlag){
         altDataSet = {
         "death": props.data.death,
-        "hospitalized": props.data.hospitalizedCurrently,
+        "hospitalizedCurrently": props.data.hospitalizedCurrently,
         "recovered": props.data.recovered
       };
       setCorona(altDataSet);
 
     }else{
       altDataSet = {
-        "totalTestResults": props.data.totalTestResults,
+        // "totalTestsViral": props.data.totalTestsViral,
 
-        "positiveCasesViral": props.data.positiveCasesViral,
+        // "positiveCasesViral": props.data.positiveCasesViral,
+        negative: props.data.negative,
+      	positive : props.data.positive
       };
       setCorona(altDataSet);
 
