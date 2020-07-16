@@ -61,11 +61,11 @@ const Chart = (props)=> {
 const createArc = d3
 		.arc()
 		.innerRadius(70)
-    	.outerRadius(200);
+    .outerRadius(200);
 
  
- const colors = d3.scaleOrdinal(d3.schemeCategory10);
-  const data = makePie(cleanupData(corona));
+const colors = d3.scaleOrdinal(d3.schemeCategory10);
+const data = makePie(cleanupData(corona));
 
 
   const formatDate = (date)=>{
