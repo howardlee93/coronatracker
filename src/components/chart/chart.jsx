@@ -2,21 +2,6 @@ import React, {useState, useEffect} from 'react';
 
 import {RadialChart} from 'react-vis';
 
-
-
-const dummy = [
-  {"positive":50442}, 
-  {"negative":604543},
-  {"pending":null},
-  {"hospitalizedCurrently":4706}
-  ];
-
-
-
-
-
-
-
 const Chart = (props)=> {
 
   const [corona, setCorona] = useState([]);
@@ -27,16 +12,14 @@ const Chart = (props)=> {
 
       let data = {
       	negative: props.data.negative,
-      	positive : props.data.positive
-      // "totalTestsViral": props.data.totalTestsViral,
+      	positive : props.data.positive,
+        // totalTestsViral: props.data.totalTestsViral,
 
-      // "positiveCasesViral": props.data.positiveCasesViral,
+        // positiveCasesViral: props.data.positiveCasesViral,
     };
 
     
     setCorona(data);
-    console.log(dummy);
-
 
   } ,[props]);
 
@@ -94,18 +77,20 @@ const Chart = (props)=> {
 
         <RadialChart
           innerRadius={70}
-          outerRadius={200}
-          label={d => d.key}
+          radius={200}
+          getLabel={d => d.key}
           getAngle={d => d.value}
           data={cleanupData(corona)}
           width={400}
           height={400}
-          onValueClick={changeDataSet}
+
+          labelsRadiusMultiplier={1.1}
+         labelsStyle={{fontSize: 16, fill: '#222'}}
+
         />
 
       </div>
   )
-
 
 };
 
