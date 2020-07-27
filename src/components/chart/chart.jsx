@@ -1,26 +1,20 @@
 import React, {useState, useEffect} from 'react';
 
-import *  as d3 from 'd3';
+import {RadialChart} from 'react-vis';
 
 
-const Pie = ({data, index, createArc, colors }) => (
 
-  <g key={index} className="arc">
-    <path className="arc" d={createArc(data)} fill={colors(index)} />
-    <text
-      transform={`translate(${createArc.centroid(data)})`}
-      textAnchor="middle"
-      alignmentBaseline="middle"
-      fill="white"
-      fontSize="10"
-      fontWeight='bold'
-    > 
-      {data.data.key}:
-      {data.value}
-      
-      </text>
-  </g>
-);
+const dummy = [
+  {"positive":50442}, 
+  {"negative":604543},
+  {"pending":null},
+  {"hospitalizedCurrently":4706}
+  ];
+
+
+
+
+
 
 
 const Chart = (props)=> {
@@ -37,9 +31,12 @@ const Chart = (props)=> {
       // "totalTestsViral": props.data.totalTestsViral,
 
       // "positiveCasesViral": props.data.positiveCasesViral,
-    }
+    };
+
     
     setCorona(data);
+    console.log(dummy);
+
 
   } ,[props]);
 
@@ -52,22 +49,6 @@ const Chart = (props)=> {
     return obj;
   }
 
-	const makePie = d3
-		.pie()
-    	.value(d => d.value)
-    	.sort(null)  
-
-
-const createArc = d3
-		.arc()
-		.innerRadius(70)
-    .outerRadius(200);
-
- 
-const colors = d3.scaleOrdinal(d3.schemeCategory10);
-const data = makePie(cleanupData(corona));
-
-
   const formatDate = (date)=>{
     let year = date.toString().slice(0,4);
     let month = date.toString().slice(4,6);
@@ -79,57 +60,48 @@ const data = makePie(cleanupData(corona));
 
 
   const changeDataSet = () => {
-    console.log(data);
-
 
     setclickedFlag(!clickedFlag);
 
     let altDataSet;
 
     if(!clickedFlag){
-        altDataSet = {
+        altDataSet = [{
         "death": props.data.death,
         "hospitalizedCurrently": props.data.hospitalizedCurrently,
         "recovered": props.data.recovered
-      };
+      }];
       setCorona(altDataSet);
 
     }else{
       altDataSet = {
-        // "totalTestsViral": props.data.totalTestsViral,
 
-        // "positiveCasesViral": props.data.positiveCasesViral,
         negative: props.data.negative,
       	positive : props.data.positive
       };
+      console.log(clickedFlag);
+
       setCorona(altDataSet);
 
     }    
   }
 
-
   return(
       <div>
       <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
   		<h2 style={{color:'white'}}> Click on the chart for more details</h2>
+      
 
-      <svg width='400px' height='400px' onClick={changeDataSet}>
-  		<g transform={`translate(200 200)`}>
-
-
-  			{data.map((d, i) => (
-  			<Pie 
-           
-  				key={i}
-  				data={d}
-  				index={i}
-  				createArc={createArc}
-  				colors={colors}
-  				/>
-  			))}
-        <legend/>
-  		</g>
-  		</svg>
+        <RadialChart
+          innerRadius={70}
+          outerRadius={200}
+          label={d => d.key}
+          getAngle={d => d.value}
+          data={cleanupData(corona)}
+          width={400}
+          height={400}
+          onValueClick={changeDataSet}
+        />
 
       </div>
   )
