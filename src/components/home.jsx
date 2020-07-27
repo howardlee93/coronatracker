@@ -46,7 +46,7 @@ const Home = () => (
       <p> This web tool was built with React/ Redux and D3.js. It utilizes <a href='https://covidtracking.com/'> Covid Tracking Project's API.</a> </p>
 
        <h3> About the coronavirus</h3>
-      <p style={{margin:'0 2%'}}>The coronavirus disease 2019 is an infectious disease originating in 
+      <p style={{margin:'0 6% 2% 6%',   textAlign: "justify"}}>The coronavirus disease 2019 is an infectious disease originating in 
       Wuhan, China. Common symptoms include fever, cough, fatigue, shortness of breath, and loss of smell and taste.
       The time from exposure to onset of symptoms is typically around five days, but may range from two to fourteen days.
 	 The virus is primarily spread between people during close contact, most often via small droplets produced by coughing, sneezing, and talking.

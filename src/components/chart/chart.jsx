@@ -2,6 +2,16 @@ import React, {useState, useEffect} from 'react';
 
 import {RadialChart, Hint} from 'react-vis';
 
+
+const style ={
+  display:'flex',
+  flexDirection: 'column',
+  alignItems: "center",
+  justifyContent: "center",
+}
+
+
+
 const Chart = (props)=> {
 
   const [corona, setCorona] = useState([]);
@@ -42,7 +52,6 @@ const Chart = (props)=> {
 
   };
 
-
   const changeDataSet = () => {
 
     setclickedFlag(!clickedFlag);
@@ -71,25 +80,22 @@ const Chart = (props)=> {
   }
 
   return(
-      <div>
+      <div style={style}>
       <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
   		<h2 style={{color:'white'}}> Click on the chart for more details</h2>
       
         <RadialChart
           innerRadius={70}
-          radius={200}
+          radius={180}
           getAngle={d => d.value}
           data={cleanupData(corona)}
-          width={500}
-          height={500}
-          labelsAboveChildren={true}
-          labelsStyle={{fontSize: 16, fill: '#0A0301', fontWeight:'bold'}}
+          width={400}
+          height={400}
           onValueMouseOver={ elem => setLabel(elem)}
           onSeriesClick={changeDataSet}
-
         >
           <Hint value={label}>
-          <div style={{background: 'white'}}>
+          <div style={{background: 'white', borderRadius:'3px', padding:'2px'}}>
             <p>{label.key}</p>
             <p>{label.value}</p>
           </div>
