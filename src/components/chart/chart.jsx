@@ -1,18 +1,19 @@
 import React, {useState, useEffect} from 'react';
 
-import {RadialChart} from 'react-vis';
+import {RadialChart, Hint} from 'react-vis';
 
 const Chart = (props)=> {
 
   const [corona, setCorona] = useState([]);
   const [clickedFlag, setclickedFlag]  = useState(false);
+  const [label, setLabel] =  useState(false);
 
 
 	useEffect(()=>{
 
       let data = {
-      	negative: props.data.negative,
-      	positive : props.data.positive,
+      	"negative": props.data.negative,
+      	"positive": props.data.positive,
         // totalTestsViral: props.data.totalTestsViral,
 
         // positiveCasesViral: props.data.positiveCasesViral,
@@ -49,18 +50,18 @@ const Chart = (props)=> {
     let altDataSet;
 
     if(!clickedFlag){
-        altDataSet = [{
+        altDataSet = {
         "death": props.data.death,
         "hospitalizedCurrently": props.data.hospitalizedCurrently,
         "recovered": props.data.recovered
-      }];
+      };
       setCorona(altDataSet);
 
     }else{
       altDataSet = {
 
-        negative: props.data.negative,
-      	positive : props.data.positive
+        "negative": props.data.negative,
+      	"positive" : props.data.positive
       };
       console.log(clickedFlag);
 
@@ -74,20 +75,26 @@ const Chart = (props)=> {
       <h1 style={{color:'white'}}> Test results for {props.data.state} on {formatDate(props.data.date)}</h1>
   		<h2 style={{color:'white'}}> Click on the chart for more details</h2>
       
-
         <RadialChart
           innerRadius={70}
           radius={200}
-          getLabel={d => d.key}
           getAngle={d => d.value}
           data={cleanupData(corona)}
-          width={400}
-          height={400}
+          width={500}
+          height={500}
+          labelsAboveChildren={true}
+          labelsStyle={{fontSize: 16, fill: '#0A0301', fontWeight:'bold'}}
+          onValueMouseOver={ elem => setLabel(elem)}
+          onSeriesClick={changeDataSet}
 
-          labelsRadiusMultiplier={1.1}
-         labelsStyle={{fontSize: 16, fill: '#222'}}
-
-        />
+        >
+          <Hint value={label}>
+          <div style={{background: 'white'}}>
+            <p>{label.key}</p>
+            <p>{label.value}</p>
+          </div>
+          </Hint>
+        </RadialChart>
 
       </div>
   )
